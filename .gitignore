@@ -13,6 +13,7 @@ data/**
 logs/**
 references/**
 results/**
+mlruns
 
 # except their sub-folders
 !data/**/

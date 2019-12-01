@@ -1,0 +1,9 @@
+name: kedro mlflow example
+channels:
+  - defaults
+dependencies:
+  - python=3.6
+  - pip:
+      - kedro==0.15.4
+      - mlflow
+      - scikit-learn
