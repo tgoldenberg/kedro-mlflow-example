@@ -38,6 +38,11 @@ from typing import Any, Dict
 
 import numpy as np
 import pandas as pd
+import mlflow
+from mlflow import sklearn
+from datetime import datetime
+from sklearn import metrics
+
 
 
 def train_model(
@@ -72,7 +77,9 @@ def train_model(
         weights.append(theta)
 
     # Return a joint multi-class model with weights for all classes
-    return np.vstack(weights).transpose()
+    model = np.vstack(weights).transpose()
+    sklearn.log_model(sk_model=model, artifact_path="model")
+    return model
 
 
 def predict(model: np.ndarray, test_x: pd.DataFrame) -> np.ndarray:
@@ -102,6 +109,9 @@ def report_accuracy(predictions: np.ndarray, test_y: pd.DataFrame) -> None:
     # Log the accuracy of the model
     log = logging.getLogger(__name__)
     log.info("Model accuracy on test set: %0.2f%%", accuracy * 100)
+    mlflow.log_metric("accuracy", accuracy)
+    mlflow.log_param("time of prediction", str(datetime.now()))
+    mlflow.set_tag("Model Version", 25)
 
 
 def _sigmoid(z):
