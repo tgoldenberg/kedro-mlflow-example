@@ -2,7 +2,19 @@
 
 ## Overview
 
-This is your new Kedro project, which was generated using `Kedro 0.15.4` by running:
+This project demonstrates in a simple manner how to integrate MLflow with a Kedro codebase. The Medium post with detailed instructions can be found [here](https://medium.com/@QuantumBlack/deploying-and-versioning-data-pipelines-at-scale-942b1d81b5f5)
+
+To get started:
+
+- Create a Conda environment with Python 3.6 - `conda create -n my_env python=3.6`
+- Install kedro - `pip install kedro==0.15.4`
+- Clone the repository and `cd` into the project root
+- Install dependencies - `kedro install`
+- Run the project - `mlflow run .`
+
+The following documentation is standard for Kedro projects. 
+
+This project was generated using `Kedro 0.15.4` by running:
 
 ```
 kedro new
